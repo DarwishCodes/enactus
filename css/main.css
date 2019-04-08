@@ -276,10 +276,6 @@ ul{
     }
 }
 
-.header .bxslider div h2 span{
-    /* color: #ff9600; */
-}
-
 .header .bxslider div p{
     font-size: 30px;
     color: ghostwhite;
@@ -454,7 +450,6 @@ ul{
 
 .box{
     position: relative;
-    display: inline-block;
     width: 27.5%;
     height: 320px;
     float: left;
@@ -791,7 +786,6 @@ ul{
 }
 
 .sp-info{
-    display: inline-block;
     position: relative;
     width: 50%;
     height: 500px;
@@ -956,9 +950,7 @@ ul{
 
 }
 
-.teams .m-c{
 
-}
 .teams .m-c h2{
     margin-left: 20px;
     font-size: 25px;
@@ -1023,7 +1015,6 @@ ul{
 
 .footer{
     position: relative;
-    display: inline-block;
     width: 100%;
     height: auto;
     background-color: #424242;
@@ -1090,7 +1081,6 @@ ul{
 
 .post{
     position: relative;
-    display: inline-block;
     margin-bottom: 10px;
     float: left;
     overflow: hidden;
@@ -1105,7 +1095,6 @@ ul{
 
 .post h4{
     color: #ddd;
-    display: inline;
     font-weight: 500;  
     margin-top: 10x;
     font-size: 15px;
@@ -1113,7 +1102,6 @@ ul{
 
 .post span{
     color: dimgrey;
-    display: inline;
     position: relative;
     margin-top: 10px;
     font-size:13px;
