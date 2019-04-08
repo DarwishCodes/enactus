@@ -43,6 +43,9 @@ $(function () {
 
     
     });
+
+    $('')
+    
     
 /* link active */
     $('.links a').click(function (){
@@ -72,6 +75,8 @@ $(function () {
   responsive: true,
   speed: 3000,
   pause:7000,
+  preventDefaultSwipeX: true,
+  oneToOneTouch: true
 
 });
     
@@ -85,98 +90,7 @@ $(function () {
     
 });
 
-
-/* smooth scroll */
-    
-$('.links li a').click(function(){
-   
-    $('html, body').animate({
-        
-        scrollTop: $('#' + $(this).data('value')).offset().top
-        
-    }, 1000);
-});
-
-
-
-
-
-/* chart diagram */
-/*
-window.onload = function () {
-
-var options = {
-	animationEnabled: true,  
-	title:{
-		text: "Enactus Egypt Growth"
-	},
-	axisX: {
-		valueFormatString: "MMM"
-	},
-	axisY: {
-		title: "enrolled universities",
-		prefix: "",
-		includeZero: true
-	},
-	data: [{
-		yValueFormatString: "$#,###",
-		xValueFormatString: "MMMM",
-		type: "spline",
-		dataPoints: [
-			{ x: new Date(2017, 0), y: 11060 },
-			{ x: new Date(2017, 1), y: 27980 },
-			{ x: new Date(2017, 2), y: 33800 },
-			{ x: new Date(2017, 3), y: 49400 },
-			{ x: new Date(2017, 4), y: 40260 },
-			{ x: new Date(2017, 5), y: 33900 },
-			{ x: new Date(2017, 6), y: 48000 },
-			{ x: new Date(2017, 7), y: 31500 },
-			{ x: new Date(2017, 8), y: 32300 },
-			{ x: new Date(2017, 9), y: 42000 },
-			{ x: new Date(2017, 10), y: 52160 },
-			{ x: new Date(2017, 11), y: 49400 }
-		]
-	}]
-};
-$("#chartContainer").CanvasJSChart(options);
-
-}
-*/
-
-
-
-var ctx = document.getElementById('myChart');
-Chart.defaults.global.defaultFontSize = 30;
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['2011', '2013', '2015', '2017', '2019'],
-        datasets: [{
-            label: 'enrolled universities',
-            data: [12, 27, 30, 43, 54],
-            backgroundColor: [
-                'rgba(13, 13, 13, 0.1)',
-                
-            ],
-            borderColor: [
-                'rgba(255, 200, 54, 1)',
-                
-            ],
-            borderWidth: 7
-        }]
-    },
-    options: {
-        responsive: true,maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    
-                }
-            }]
-        }
-    }
-});
+// RESPONSIVE
 
 
 
@@ -184,16 +98,111 @@ var myChart = new Chart(ctx, {
 
 
 $(document).ready(function(){
-  $(window).scroll(function(){
-  	var scroll = $(window).scrollTop();
-	  if (scroll > 300) {
-	    $('.navbar').css('background' , 'rgba(51, 51, 51, 0.8)');
-	  }
 
-	  else{
-		  $('.navbar').css('background' , '#333');  	
-	  }
+
+  $(window).scroll(function(){
+
+
+
+      var paper = $(window).scrollTop();
+	  if (paper > 200) {
+        $('.navbar').css('background' , 'rgba(51, 51, 51, 1)');
+        $('.navbar').css('box-shadow' , 'rgba(0, 0, 0, 0.22) 0px 4px 4px 0px');
+        
+        if (paper <= 300 & $(window).width() >= 900) {
+            $('#main').css('transform', 'translateY(-'+paper+'px)');
+        }
+
+        
+
+        if($(window).width() <= "900px") {
+            $('#main').css('width', '100%');
+        } else {
+            $('#main').css('width', '100%');
+            $('.about').css('border-radius', '0px');
+        }
+
+        
+        $('.nav-logo').css('width', '150px'); 
+
+    } else {
+        $('.navbar').css('background' , 'rgba(51, 51, 51, 0)');
+
+        if($(window).width() >= 900) {
+            $('#main').css('transform', 'translateY(-45px)');  
+        }
+        
+        $('.navbar').css('box-shadow' , '0px 2px 10px rgba(1, 1, 1, 0)');
+        
+
+        if($(window).width() <= 900) {
+            $('#main').css('width', '100%');
+        } else {
+            $('#main').css('width', '73%');
+            $('.nav-logo').css('width', '180px'); 
+            $('.about').css('border-radius', '60px');
+        }
+
+      }
+
+      if(paper <= 500 & $(window).width() >= 900) {
+        var parallex = paper / 3;
+        var fade = (paper / -2000) + 0.2;
+  
+        $('.background-hero').css('background-position-y' , '-'+parallex+'px');
+        $('.background-hero').css('filter' , 'brightness(' + fade +')');
+      }
+
+
+      if(paper > 10) {
+        $('.navbar').css('background' , 'rgba(51, 51, 51, 0.4)');
+      }
+
+      if(paper > 300) {
+        $('.navbar').css('background' , 'rgba(51, 51, 51, 1)');
+      }
+
+      if(paper > 3800) {
+        $('.teams').css('background-color' , '#fec223');
+        $('.t-section h2 span').css('color' , 'white');
+      }
+      
+      
+
   });
+
+
+
+  var readPaper = $(window).scrollTop();
+  if (readPaper > 10) {
+    $('.navbar').css('background' , 'rgba(51, 51, 51, 1)');
+    $('.navbar').css('box-shadow' , 'rgba(0, 0, 0, 0.22) 0px 4px 4px 0px');
+
+    if($(window).width() >= 900) {
+        $('#main').css('transform', 'translateY(-500px)'); 
+    }
+     
+}
+
+  else{
+    $('.navbar').css('background' , 'rgba(51, 51, 51, 0)');
+
+    if($(window).width() >= 900) {
+        $('#main').css('transform', 'translateY(-45px)'); 
+    }
+     
+    $('.navbar').css('box-shadow' , '0px 2px 10px rgba(1, 1, 1, 0)');
+    
+  }
+
+  if($(window).width() <= 900) {
+
+    $("#demo-menu-lower-right").css('display', 'block');
+    $("#nav-box-links").css('display', 'none');
+} else {
+    $("#demo-menu-lower-right").css('display', 'none');
+    $("#nav-box-links").css('display', 'block');
+}
 });
 
 
@@ -224,16 +233,16 @@ var mixer = mixitup('.proj-g');
     });
 
 /* nice scroll */
-    $("body").niceScroll({
-    cursorcolor:"#ff9600",
-    cursorwidth:"20px",
-    cursorfixedheight: 250,
-    cursorborderradius:0,
-    cursorborder:"1px solid #333",
-    cursoropacitymax: 0.8,
+    // $("body").niceScroll({
+    // cursorcolor:"#ff9600",
+    // cursorwidth:"20px",
+    // cursorfixedheight: 250,
+    // cursorborderradius:0,
+    // cursorborder:"1px solid #333",
+    // cursoropacitymax: 0.8,
 
 
-    });
+    // });
 
     
 }));
